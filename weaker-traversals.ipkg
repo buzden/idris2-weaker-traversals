@@ -1,0 +1,14 @@
+package weaker-traversals
+
+authors = "Denis Buzdalov"
+
+brief = "Traversals that are weaker than `Traversable` and thus more broadly applicable"
+
+license = "Apache-2.0"
+
+sourcedir = "src"
+builddir = ".build"
+
+modules = Data.Functor.TraverseSt
+
+-- depends =

@@ -1,0 +1,2 @@
+weaker-traversals (Traversals for Idris 2 that are weaker than `Traversable` and thus more broadly applicable)
+Copyright 2022-2025 Denis Buzdalov

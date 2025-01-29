@@ -1,0 +1,5 @@
+[custom.all.weaker-traversals]
+type = "local"
+path = "."
+ipkg = "weaker-traversals.ipkg"
+test = "tests/tests.ipkg"

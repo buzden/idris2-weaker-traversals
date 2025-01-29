@@ -1,0 +1,5 @@
+package a-test
+
+depends = weaker-traversals
+
+modules = README

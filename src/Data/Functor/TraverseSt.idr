@@ -23,11 +23,11 @@ interface TraversableSt f where
 --- Particular universal functions ---
 --------------------------------------
 
-export %inline
+public export %inline
 withIndex : TraversableSt f => f a -> f (Nat, a)
 withIndex = traverseSt Z $ \n, x => (S n, n, x)
 
-export %inline
+public export %inline
 (.withIndex) : TraversableSt f => f a -> f (Nat, a)
 (.withIndex) = withIndex
 
