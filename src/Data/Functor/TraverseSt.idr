@@ -11,12 +11,15 @@ import Data.List.Lazy
 --- Interface ---
 -----------------
 
--- A particular case of sub-traversability with the state monad.
--- This is not a full traverse because state is not returned,
--- thus there is no way to demand the final state.
--- This allows us to implement this interface for (potentially) infinite data types.
+||| A particular case of sub-traversability with the state monad.
+|||
+||| This is not a full traverse because the final state is not returned.
+||| This allows us to implement this interface for (potentially) infinite data types.
+|||
+||| This interface has a law connecting to the `Functor` superinterface:
+||| `traverseSt () $ const $ pure . f` must act as `map f`.
 public export
-interface TraversableSt f where
+interface Functor f => TraversableSt f where
   traverseSt : s -> (s -> a -> (s, b)) -> f a -> f b
 
 --------------------------------------
@@ -58,13 +61,3 @@ TraversableSt LazyList where
 public export
 Traversable f => TraversableSt f where
   traverseSt s f = evalState s . traverse (ST . pure .: flip f)
-
-------------------------------------------------------
---- Additional implementations of other interfaces ---
-------------------------------------------------------
-
-namespace Functor
-
-  public export
-  [FromTraversableSt] TraversableSt f => Functor f where
-    map f = traverseSt () $ const $ pure . f
